@@ -4,8 +4,8 @@ import gzip
 import json
 import os
 
-SNAPSHOT_DIR = '/volumes/lacie/metoo/openalex-snapshot-20240417'
-CSV_DIR = '/volumes/lacie/metoo/csv-files/author_raw_names1'
+SNAPSHOT_DIR = '/Volumes/WDC4/openalex-snapshot'
+CSV_DIR = '/Volumes/WDC4/openalex-snapshot/csv-files/author_raw_names'
 
 
 if not os.path.exists(CSV_DIR):
@@ -19,7 +19,7 @@ csv_files = {
             'name': os.path.join(CSV_DIR, 'works_authorships.csv.gz'),
             'columns': [
                 'work_id', 'author_position', 'author_id', 'institution_id',
-                'raw_author_name','is_corresponding'
+                'raw_author_name','raw_affiliation_string','is_corresponding'
             ]
         },
     },
@@ -34,7 +34,7 @@ def flatten_works():
 
         files_done = 0
         for jsonl_file_name in glob.glob(
-                os.path.join(SNAPSHOT_DIR, 'data', 'works', 'works1', '*', '*.gz')):
+                os.path.join(SNAPSHOT_DIR, 'data', 'works', '*', '*.gz')):
             print(jsonl_file_name)
             with gzip.open(jsonl_file_name, 'r') as works_jsonl:
                 for work_json in works_jsonl:
@@ -67,6 +67,8 @@ def flatten_works():
                                         'institution_id': institution_id,
                                         'raw_author_name': authorship.get(
                                             'raw_author_name'),
+                                        'raw_affiliation_string': authorship.get(
+                                            'raw_affiliation_string'),
                                         'is_corresponding': authorship.get(
                                             'is_corresponding'),
                                     })
