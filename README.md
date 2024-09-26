@@ -7,3 +7,5 @@ We will happily accept pull requests if you are feeling generous!
 
 Please feel free to contact us via our 
 [help form](https://openalex.org/help).
+
+get* are a group of scripts to extract useful information from the orgininal openalex data

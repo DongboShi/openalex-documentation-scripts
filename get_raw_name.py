@@ -54,8 +54,7 @@ def flatten_works():
                                 institutions = authorship.get('institutions')
                                 institution_ids = [i.get('id') for i in
                                                    institutions]
-                                institution_ids = [i for i in institution_ids if
-                                                   i]
+                                institution_ids = [i for i in institution_ids if i]
                                 institution_ids = institution_ids or [None]
 
                                 for institution_id in institution_ids:
