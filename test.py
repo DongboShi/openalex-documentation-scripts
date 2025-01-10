@@ -11,6 +11,20 @@ with open("part_000",'r') as f:
 
 work_id = work.get('id')
 
+if grants := work.get('grants'):
+    for grant in grants:
+        print(grant.get('funder'))
+
+abstract = {'work_id': work_id}
+abstract.update({"Abstract":work.get('abstract_inverted_index')})
+
+json_object = json.dumps(abstract, indent=4)
+
+# Writing to sample.json
+with open("sample.json", "w") as outfile:
+    outfile.write(json_object)
+
+
 # authorships
 if authorships := work.get('authorships'):
     for authorship in authorships:
