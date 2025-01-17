@@ -52,3 +52,6 @@
 \copy openalex.works_referenced_works (work_id, referenced_work_id) from program 'gunzip -c csv-files/works_referenced_works.csv.gz' csv header
 \copy openalex.works_related_works (work_id, related_work_id) from program 'gunzip -c csv-files/works_related_works.csv.gz' csv header
 
+\copy openalex.works_grants(work_id, funder, funder_display_name, award_id) from program 'gunzip -c csv-files/others/works_grants.csv.gz' csv header
+\copy openalex.works_keywords(work_id, kw_id, keyword, score) from program 'gunzip -c csv-files/others/works_keywords.csv.gz' csv header
+\copy openalex.works_au_affs(work_id, author_position, author_id, raw_author_name, is_corresponding, affiliation_seq, raw_affiliation_string, institution_id) from program 'gunzip -c /Volumes/WDC4/openalex-snapshot/csv-files/affiliations/works_au_affs.csv.gz' csv header

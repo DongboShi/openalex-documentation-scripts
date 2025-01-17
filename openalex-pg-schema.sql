@@ -403,6 +403,18 @@ CREATE TABLE openalex.works_authorships (
     raw_affiliation_string text
 );
 
+CREATE TABLE openalex.works_au_affs (
+    work_id text,
+    author_position text,
+    author_id text,
+    raw_author_name text,
+    is_corresponding boolean,
+    affiliation_seq integer,
+    raw_affiliation_string text,
+    institution_id text
+
+);
+
 
 --
 -- Name: works_biblio; Type: TABLE; Schema: openalex; Owner: -
@@ -497,6 +509,19 @@ CREATE TABLE openalex.works_related_works (
     related_work_id text
 );
 
+CREATE TABLE openalex.works_grants (
+    work_id text,
+    funder text,
+    funder_display_name text,
+    award_id text
+);
+
+CREATE TABLE openalex.works_keywords (
+    work_id text,
+    kw_id text,
+    keyword text,
+    score text
+);
 
 ----
 ---- Name: authors_counts_by_year authors_counts_by_year_pkey; Type: CONSTRAINT; Schema: openalex; Owner: -
@@ -666,6 +691,7 @@ CREATE INDEX works_locations_work_id_idx ON openalex.works_locations USING btree
 
 CREATE INDEX works_best_oa_locations_work_id_idx ON openalex.works_best_oa_locations USING btree (work_id);
 
+CREATE INDEX works_au_affs_work_id ON openalex.works_au_affs USING btree (work_id);
 
 --
 -- PostgreSQL database dump complete

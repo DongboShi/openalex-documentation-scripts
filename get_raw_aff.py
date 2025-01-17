@@ -3,6 +3,7 @@ import glob
 import gzip
 import json
 import os
+import re
 
 SNAPSHOT_DIR = '/Volumes/WDC4/openalex-snapshot'
 CSV_DIR = '/Volumes/WDC4/openalex-snapshot/csv-files/affiliations'
@@ -63,10 +64,10 @@ def flatten_works():
                                                 'work_id': work_id,
                                                 'author_position': authorship.get('author_position'),
                                                 'author_id': author_id,
-                                                'raw_author_name': authorship.get('raw_author_name'),
+                                                'raw_author_name': re.sub(",+",",",affiliation.get('raw_author_name').strip().replace("\n",",").replace("\r",",")),
                                                 'is_corresponding': authorship.get('is_corresponding'),
                                                 'affiliation_id':affiliation_id,
-                                                'raw_affiliation_string': affiliation.get('raw_affiliation_string'),
+                                                'raw_affiliation_string': re.sub(",+",",",affiliation.get('raw_affiliation_string').strip().replace("\n",",").replace("\r",",")),
                                                 'institution_ids':institution_id
                                             })
                                         affiliation_id += 1
