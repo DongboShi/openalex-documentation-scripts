@@ -5,8 +5,8 @@ import json
 import os
 import re
 
-SNAPSHOT_DIR = "/Volumes/WDC4/openalex_250825/openalex-snapshot"
-CSV_DIR = "/Volumes/WDC4/openalex_250825/csv-files/affiliations"
+SNAPSHOT_DIR = "/data/home/share/openalex_250825/openalex-snapshot"
+CSV_DIR = "/data/home/share/openalex_250825/csv-files/affiliations"
 
 if not os.path.exists(CSV_DIR):
     os.mkdir(CSV_DIR)
